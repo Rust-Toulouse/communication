@@ -1,0 +1,5 @@
+/* Polices embarquées en local (subset latin) — fonctionne hors ligne */
+@font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 200 800; font-stretch: 75% 100%; font-display: block;
+  src: url(bricolage-1.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 800; font-display: block;
+  src: url(jetbrains-1.woff2) format('woff2'); }

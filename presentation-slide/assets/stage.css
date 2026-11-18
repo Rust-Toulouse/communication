@@ -1,0 +1,14 @@
+/* Scène 1920×1080 mise à l'échelle pour remplir l'écran (letterbox si ratio différent) */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden}
+.slide{
+  position:absolute;left:50%;top:50%;
+  width:1920px;height:1080px;overflow:hidden;
+  transform:translate(-50%,-50%) scale(var(--s,1));
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.slide img{user-select:none;-webkit-user-drag:none}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-.6deg)}}
+.bob{animation:bob 6s ease-in-out infinite;transform-origin:50% 100%}
+@media (prefers-reduced-motion:reduce){.bob{animation:none}}
+.static .bob{animation:none}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meetup Rust Toulouse · Aquarelle (grand écran)</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/stage.css">
+<style>
+  :root{
+    --ink:#1b2440;
+    --ink-soft:#33405f;
+    --rust:#d24f1b;
+    --rust-deep:#9c3612;
+    --paper:#fffaf1;
+  }
+  html,body{background:#c3d6db}
+  .slide{font-family:'Bricolage Grotesque',system-ui,sans-serif;color:var(--ink);background:#c3d6db}
+
+  /* Fond : l'aquarelle plein cadre, le dôme de la Grave reste dégagé à gauche */
+  .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  /* Voile clair derrière le titre pour la lisibilité sur les nuages */
+  .wash{position:absolute;inset:0;pointer-events:none;background:
+    radial-gradient(1320px 470px at 1160px 190px, rgba(246,250,251,.82) 0%, rgba(246,250,251,.55) 48%, rgba(246,250,251,0) 78%)}
+
+  .head{position:absolute;left:612px;top:54px}
+  .title{margin:0;font-size:148px;line-height:.92;font-weight:800;font-stretch:76%;letter-spacing:-.015em;
+    font-variation-settings:'opsz' 96}
+  .title .rust{color:var(--rust)}
+  .lede{margin:20px 0 0;font-size:48px;line-height:1.1;font-weight:500;color:var(--ink-soft)}
+  .lede strong{font-weight:800;color:var(--ink)}
+
+  /* Carte QR façon carte postale — compacte pour grand écran : le code seul */
+  .card{position:absolute;left:636px;top:412px;width:392px;padding:26px;
+    background:var(--paper);border-radius:30px;transform:rotate(-1.5deg);
+    box-shadow:12px 4px 0 rgba(45,20,5,.2)} /* même ombre « fantôme » à plat que le crabe */
+  .card img{display:block;width:340px;height:340px}
+  /* Étapes : sorties de la carte, sur une ligne sous l'accroche */
+  .steps{display:flex;gap:44px;list-style:none;margin:26px 0 0;padding:0;font-size:36px;line-height:1.2;font-weight:600;color:var(--ink)}
+  .steps li{display:flex;align-items:center;gap:14px}
+  .num{flex:none;display:grid;place-items:center;width:50px;height:50px;border-radius:50%;
+    background:var(--rust);color:#fff;font-size:28px;font-weight:800}
+  .chan{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.95em;color:var(--rust-deep);
+    background:#fbe2d1;padding:2px 10px;border-radius:9px}
+
+  /* Le crabe se pose sur les toits ; le doigt du petit pointe le QR code */
+  .crab{position:absolute;left:1066px;top:366px;width:740px}
+  /* Sponsors : petite carte postale, sœur de la carte QR (même papier, mêmes coins, même ombre que le crabe),
+     inclinée en sens inverse et centrée dans l'axe du dôme */
+  .sponsors{position:absolute;left:92px;bottom:40px;width:476px;padding:18px 28px 22px;color:#1d2236;
+    background:var(--paper);border-radius:22px;transform:rotate(1.5deg);box-shadow:12px 4px 0 rgba(45,20,5,.2)}
+  .sp-label{display:flex;align-items:center;justify-content:center;gap:10px;font-size:16px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-soft)}
+  .sp-label .emo{font-size:24px;letter-spacing:.04em}
+  .sp-main{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px}
+  .sp-main svg{width:46px;height:46px;fill:currentColor;flex:none}
+  .sp-main span{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:38px;letter-spacing:-.02em}
+  .sp-row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:16px;border-top:1.5px solid rgba(27,36,64,.16)}
+  .sp-row img{display:block}
+  .sp-k{height:38px}.sp-m{height:22px}.sp-d{height:35px}
+</style>
+</head>
+<body>
+<main class="slide" aria-label="Meetup Rust Toulouse — rejoins la communauté Toulouse Tech">
+  <img class="bg" src="assets/toulouse-watercolor.png" alt="">
+  <div class="wash"></div>
+  <aside class="sponsors" aria-label="Sponsors">
+    <div class="sp-label">Merci à nos sponsors <span class="emo">🍕🍺</span></div>
+    <div class="sp-main"><svg viewBox="0 0 400 400" aria-hidden="true"><polygon points="0,400 200,400 200,200 140,200 140,380 4,380 4,338.196 0,345.458"/><polygon points="4,338.196 0,345.458 0,200 4,200"/><polygon points="7,377 39.5,377 137,200 247.169,0 190.294,0 7,332.75"/><polygon points="141.653,197 167.487,197 276.004,0 250.169,0"/><polygon points="170.487,197 239.341,197 400,98.5 347.858,0 279.004,0 331.146,98.5"/></svg><span>Bashroom</span></div>
+    <div class="sp-row">
+      <img class="sp-k" src="assets/sponsors/kaizen-dark.svg" alt="Kaizen Solutions">
+      <img class="sp-m" src="assets/sponsors/monkeypatch-dark.svg" alt="MonkeyPatch">
+      <img class="sp-d" src="assets/sponsors/devfest-dark.svg" alt="DevFest Toulouse">
+    </div>
+  </aside>
+
+  <header class="head">
+    <h1 class="title">Meetup <span class="rust">Rust</span> Toulouse</h1>
+    <p class="lede">Rejoins la communauté <strong>Toulouse Tech</strong> sur Slack</p>
+    <ol class="steps">
+      <li><span class="num">1</span><span>Scanne le QR code</span></li>
+      <li><span class="num">2</span><span>Rejoins le channel <span class="chan">#_rust</span></span></li>
+    </ol>
+  </header>
+
+  <section class="card" aria-label="QR code d'invitation au Slack Toulouse Tech">
+    <img src="assets/qr-brick.svg" alt="QR code : invitation au Slack Toulouse Tech">
+  </section>
+
+  <img class="crab bob" src="assets/rust-crab.png" alt="Le crabe Rust et trois membres de la communauté ; l'un d'eux montre le QR code du doigt">
+</main>
+<script src="assets/stage.js"></script>
+</body>
+</html>
