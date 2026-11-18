@@ -1,14 +1,23 @@
-/* Scène 1920×1080 mise à l'échelle pour remplir l'écran (letterbox si ratio différent) */
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;height:100%;overflow:hidden}
-.slide{
-  position:absolute;left:50%;top:50%;
-  width:1920px;height:1080px;overflow:hidden;
-  transform:translate(-50%,-50%) scale(var(--s,1));
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+/* 1920×1080 slide, scaled by stage.js to fit the window (letterboxed when the ratio differs) */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; overflow: hidden; }
+
+.slide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  -webkit-font-smoothing: antialiased;
 }
-.slide img{user-select:none;-webkit-user-drag:none}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-.6deg)}}
-.bob{animation:bob 6s ease-in-out infinite;transform-origin:50% 100%}
-@media (prefers-reduced-motion:reduce){.bob{animation:none}}
-.static .bob{animation:none}
+/* Every layer of the slide is placed with absolute pixel coordinates */
+.slide > * { position: absolute; }
+.slide img { display: block; user-select: none; -webkit-user-drag: none; }
+
+/* Gentle idle motion — disabled for reduced-motion users and for the PNG export (?static) */
+@keyframes bob { 50% { transform: translateY(-10px) rotate(-0.6deg); } }
+.bob { animation: bob 6s ease-in-out infinite; transform-origin: 50% 100%; }
+.static .bob { animation: none; }
+@media (prefers-reduced-motion: reduce) { .bob { animation: none; } }

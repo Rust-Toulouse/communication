@@ -1,17 +1,16 @@
-// Mise à l'échelle + raccourcis : F = plein écran
-(function () {
-  var slide = document.querySelector('.slide');
-  function fit() {
-    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-    slide.style.setProperty('--s', s);
-  }
-  window.addEventListener('resize', fit);
-  fit();
-  if (/[?&]static\b/.test(location.search)) document.documentElement.classList.add('static');
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'f' || e.key === 'F') {
-      if (document.fullscreenElement) document.exitFullscreen();
-      else document.documentElement.requestFullscreen();
-    }
-  });
-})();
+// Scales the 1920×1080 slide to the window. Press F to toggle fullscreen.
+// Add ?static to the URL to freeze the animation (used for the PNG export).
+const slide = document.querySelector('.slide');
+const fit = () => slide.style.setProperty('--scale', Math.min(innerWidth / 1920, innerHeight / 1080));
+addEventListener('resize', fit);
+fit();
+
+if (new URLSearchParams(location.search).has('static')) {
+  document.documentElement.classList.add('static');
+}
+
+addEventListener('keydown', (e) => {
+  if (e.key.toLowerCase() !== 'f') return;
+  if (document.fullscreenElement) document.exitFullscreen();
+  else document.documentElement.requestFullscreen();
+});
